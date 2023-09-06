@@ -73,10 +73,14 @@ export default function Barra(props) {
                 class="list-group-item border-0 d-inline-block text-truncate"
                 data-bs-parent="#sidebar"
               >
-               
-                <Link to="/Productos" className="text-light">
+                <Link to="/Productos" className="text-light" data-bs-parent="#sidebar">
                 <i class="bi bi-file-earmark-spreadsheet"></i>
                   <br></br>Administrar Productos
+              </Link>
+                <br/>
+                <Link to="/ventas" className="text-light" data-bs-parent="#sidebar" >
+                <i class="bi bi-safe2" style={{paddingTop:"15px"}}></i>
+                  <br></br>Administrar ventas
                 </Link>
               </a>
             </div>
@@ -161,9 +165,7 @@ export default function Barra(props) {
               Direccion de la cuenta: &ensp;{props.Accounts}
             </p>
             <p class="light">Fondos: &ensp;{props.Balance}&nbsp;ETH</p>
-            <button className="btn btn-light" onClick={props.conectarWallet}>
-              Conectar Wallet
-            </button>
+            <button className="btn btn-light" id="btnSub" onClick={props.conectarWallet}>Desconectar Wallet</button>
           </div>
         </main>
       </div>
