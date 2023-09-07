@@ -105,7 +105,7 @@ const Ventas = () => {
                                 <li className="lista-carrito">Producto... x1 $35.00 <br /> XL / Rojo oscuro</li>
                                 <li className="lista-carrito">Producto... x1 $35.00 <br /> XL / Rojo oscuro</li>
                                 <li className="lista-carrito">Producto... x1 $35.00 <br /> XL / Rojo oscuro</li>
-                                <li className="lista-carrito">Producto... x1 $35.00 <br /></li>
+                                <li className="lista-carrito">Producto... x1 $36.00 <br /></li>
                             </ul>
                         </div>
                         <hr />
