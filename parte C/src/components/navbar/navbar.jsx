@@ -39,26 +39,20 @@ export default function Barra(props) {
               <a
                 href="#"
                 class="list-group-item border-0 d-inline-block text-truncate"
-                data-bs-parent="#sidebar"
-              >
-                <i class="bi bi-currency-exchange"></i> <br></br>
-                <span>Intercambio</span>
-              </a>
+                data-bs-parent="#sidebar">
+                <Link to="/Productos" className="text-light">
+                  <i class="bi bi-file-earmark-spreadsheet"></i>
+                  <br></br>Administrar Productos
+                </Link></a>
               <a
                 href="#"
                 class="list-group-item border-0 d-inline-block text-truncate"
                 data-bs-parent="#sidebar"
               >
-                <i class="bi bi-arrow-down-left"></i> <br></br>
-                <span>Recibir</span>
-              </a>
-              <a
-                href="#"
-                class="list-group-item border-0 d-inline-block text-truncate"
-                data-bs-parent="#sidebar"
-              >
-                <i class="bi bi-arrow-up-right"></i> <br></br>
-                <span>Enviar</span>
+                <Link to="/ventas" className="text-light" >
+                  <i class="bi bi-safe2" style={{ paddingTop: "15px" }}></i>
+                  <br></br>Administrar ventas
+                </Link>
               </a>
               <a
                 href="#"
@@ -67,21 +61,6 @@ export default function Barra(props) {
               >
                 <i class="bi bi-file-check-fill"></i> <br></br>
                 <span>Transacciones</span>
-              </a>
-              <a
-                href="#"
-                class="list-group-item border-0 d-inline-block text-truncate"
-                data-bs-parent="#sidebar"
-              >
-                <Link to="/Productos" className="text-light" data-bs-parent="#sidebar">
-                <i class="bi bi-file-earmark-spreadsheet"></i>
-                  <br></br>Administrar Productos
-              </Link>
-                <br/>
-                <Link to="/ventas" className="text-light" data-bs-parent="#sidebar" >
-                <i class="bi bi-safe2" style={{paddingTop:"15px"}}></i>
-                  <br></br>Administrar ventas
-                </Link>
               </a>
             </div>
           </div>
@@ -129,7 +108,7 @@ export default function Barra(props) {
                   </a>
                   <ul class="dropdown-menu dropdown-menu-lg-end">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="#" data-bs-target="#myModal" data-bs-toggle="modal">
                         Configuración
                       </a>
                     </li>
@@ -165,7 +144,58 @@ export default function Barra(props) {
               Direccion de la cuenta: &ensp;{props.Accounts}
             </p>
             <p class="light">Fondos: &ensp;{props.Balance}&nbsp;ETH</p>
-            <button className="btn btn-light" id="btnSub" onClick={props.conectarWallet}>Desconectar Wallet</button>
+            <div class="row text-center">
+              <div class="col-md">
+                <button className="btn btn-light" id="btnSub" onClick={props.conectarWallet}><i class="bi bi-link-45deg"></i></button>
+                <label>Desconectar Wallet</label>
+              </div>
+              <div class="col-md">
+                <button class="btn btn-light" >
+                  <i class="bi bi-send-fill"></i>
+                </button>
+                <br></br>
+                <label>Enviar a...</label>
+              </div>
+              <div class="col-md">
+                <button class="btn btn-light">
+                  <i class="bi bi-currency-exchange"></i>
+                </button>
+                <br></br>
+                <label >Intercambiar</label>
+              </div>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Configuracion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container px-4 text-center">
+                      <div class="row gx-5">
+                        <div class="col">
+                          <div class="p-3"><button className="btn text-light">Agregar direcciones</button></div>
+                        </div>
+                        <div class="col">
+                          <div class="p-3">
+                            <form>
+                            <label id="direccion">Ingrese su direccion nueva</label>
+                            <br></br>
+                            <input type="text" for="direccion"></input>  
+                            </form>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
       </div>
