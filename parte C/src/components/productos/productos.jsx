@@ -119,6 +119,12 @@ function Products() {
 
   // getProductos();
 
+
+  const handleVolverAtras = () => {
+    window.history.back();
+  };
+
+  
   return (
     <div className="container-fluid">
       <div class="row flex-nowrap">
@@ -196,6 +202,10 @@ function Products() {
               </button>
             </div>
           </nav>
+
+          <br></br>
+          <h1>Gestion de Productos</h1>
+          
           <div className="row">
             <div className="col-md-4">
               <div className="form-group">
@@ -347,6 +357,7 @@ function Products() {
           </table>
         </main>
       </div>
+      <button onClick={handleVolverAtras}>Volver Atrás</button>
     </div>
   );
 }
