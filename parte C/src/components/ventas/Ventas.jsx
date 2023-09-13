@@ -1,6 +1,7 @@
 import React from "react";
 import './Ventas.css'
 import { Link } from "react-router-dom";
+import QRCode from "react-qr-code";
 
 const Ventas = () => {
     return (
@@ -188,6 +189,7 @@ const Ventas = () => {
                         <hr />
                         <p className="pt-3">Descuento: $10.00</p>
                         <p className="pb-3">Impuestos: $5.00</p>
+                        /*<QRCode value='Total=$135' size={256}></QRCode>*/
                         <hr />
                         <p>Total: $135.00</p>
                         <div className="checkbox">
