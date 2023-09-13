@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 import QRCode from "react-qr-code";
 
 const Ventas = () => {
+     /*function codigoQR(){
+    console.log("Generando QR de Venta");
+    Swal.fire({
+      title: 'Sweet!',
+      text: 'Modal with a custom image.',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    }
+    )   
+  }*/
     return (
         <div className="container-fluid">
             <div className="row flex-nowrap"><div class="col-auto px-0 me-auto">
@@ -194,7 +205,8 @@ const Ventas = () => {
                         <p>Total: $135.00</p>
                         <div className="checkbox">
                             <div>
-                                <input type="checkbox"/> <span className="text-checkbox">Obtener factura</span>
+                                <input type="check/> <span className="text-checkbox">Obtener factura</span>
+                                /*<button onClick={codigoQR}>Obtener CodigoQR</button>*/
                             </div>
                             <div>
                                 <input type="checkbox"/> <span className="text-checkbox me-3">Obtener ticket</span>
