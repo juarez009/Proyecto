@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2023 a las 06:03:47
+-- Tiempo de generación: 13-09-2023 a las 00:32:58
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,7 +55,7 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`) VALUES
 (40, 'Papel', 'nose', 7.00, 14),
-(42, 'Lapiz', 'aaaa', 0.25, 8);
+(44, 'Libreta', 'para dibujar', 2.00, 12);
 
 -- --------------------------------------------------------
 
@@ -79,10 +79,19 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
-  `rol` varchar(50) NOT NULL,
-  `contrasenia_hash` varchar(255) NOT NULL,
-  `foto` mediumblob DEFAULT NULL
+  `codigo` int(6) NOT NULL,
+  `rol` enum('administrador','usuario') NOT NULL DEFAULT 'usuario',
+  `contrasenia_hash` varchar(60) NOT NULL,
+  `imagen` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `codigo`, `rol`, `contrasenia_hash`, `imagen`) VALUES
+(1, 'Jimy', 'js@gmail.com', 0, 'administrador', 'xaxa', NULL),
+(2, 'Matias', 's@gmail.com', 123456, 'usuario', '$2b$10$.h/l8QJ0Xg9/m9QWPRmPEeq6235wIspYxJMpqqMbD.Abcxukk2q/6', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -129,7 +138,7 @@ ALTER TABLE `detalle_transaccion`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `transaccion`
@@ -141,7 +150,7 @@ ALTER TABLE `transaccion`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -153,12 +162,6 @@ ALTER TABLE `usuarios`
 ALTER TABLE `detalle_transaccion`
   ADD CONSTRAINT `detalle_transaccion_ibfk_1` FOREIGN KEY (`id_transaccion`) REFERENCES `transaccion` (`id`),
   ADD CONSTRAINT `detalle_transaccion_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`);
-
---
--- Filtros para la tabla `transaccion`
---
-ALTER TABLE `transaccion`
-  ADD CONSTRAINT `transaccion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
