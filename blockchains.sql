@@ -54,8 +54,31 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`) VALUES
-(40, 'Papel', 'nose', 7.00, 14),
-(44, 'Libreta', 'para dibujar', 2.00, 12);
+('1', 'Cuadernos grapados', '21', 'Cuadernos de rayas engrapados.', '0.65'),
+('2', 'Lapiceros (rojo, negro y azul)', '45', 'Lapiceros bic de diferentes colores.', '0.25'),
+('3', 'Cosedora', '10', 'Maquina para coser.', '10.65'),
+('4', 'Ganchos para cosedoras', '50', 'ganchos de repuesto para cosedora.', '2.50'),
+('5', 'Block iris', '15', 'Block de colores.', '1.50'),
+('6', 'Folder tamaño carta', '10', 'Folder de colores tamaño carta.', '0.25'),
+('7', 'Recibo de caja menor', '25', 'Recibos comerciales.', '0.25'),
+('8', 'Lapiz N2', '50', 'Lapiz para dibujar N2', '0.45'),
+('9', 'Caja de colores', '22', 'Caja de 24 colores.', '2.50'),
+('10', 'Bisturi', '19', 'bisturi para cortar diferentes tipos de papel o carton.', '3.15'),
+('11', 'Cinta de enmascarar', '21', 'Cinta para enmascarar.', '0.75'),
+('12', 'Cuadernos argollados', '22', 'Cuadernos de rayas argollados.', '1.00'),
+('13', 'Block rayado carta y oficio', '41', 'Block de notas tamaño carta y tamaño oficio.', '0.40'),
+('14', 'Grapadora de uno o dos huecos', '17', 'Grapadora mediana.', '2.50'),
+('15', 'Tablero de corcho', '11', 'Tablero de corte.', '6.35'),
+('16', 'Marcadores borrables para tablero', '20', 'Plumones para pizarra.', '1.25'),
+('17', 'Tizas para tablero', '17', 'Tiza para pizarra.', '0.75'),
+('18', 'Borrados para marcadores', '19', 'Borrador para pizarra.', '3.00'),
+('19', 'Papel carta para impresora', '5', 'Papel bond color blanco.', '0.01'),
+('20', 'Block de dibujo', '15', 'Block en blanco tamaño carta y tamaño oficio.', '0.75'),
+('21', 'Bitacoras', '23', 'Bitacoras de anotaciones.', '1.25'),
+('22', 'Marcadores de vinilo', '13', 'Marcadores.', '1.50'),
+('23', 'Micropuntas de colores', '13', 'Micro puntas de respuesto.', '2.00'),
+('24', 'Portaminas', '15', 'Porta minas de repuesto.', '1.60'),
+('25', 'Lapiz puntaminas', '12', 'Lapiz puntamina sencillo', '1.50');
 
 -- --------------------------------------------------------
 
