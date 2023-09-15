@@ -1,7 +1,7 @@
 import React from "react";
 import './Ventas.css'
 import { Link } from "react-router-dom";
-import QRCode from "react-qr-code";
+//import QRCode from "react-qr-code";
 
 const Ventas = () => {
      /*function codigoQR(){
@@ -15,7 +15,6 @@ const Ventas = () => {
     }
     )   
   }*/
-const Ventas = () => {
     return (
         <div className="container-fluid">
             <div class="row flex-nowrap">
