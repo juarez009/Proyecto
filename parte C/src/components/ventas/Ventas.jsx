@@ -1,6 +1,7 @@
 import React from "react";
 import './Ventas.css'
 import { Link } from "react-router-dom";
+import Cards from "./Cards";
 //import QRCode from "react-qr-code";
 
 const Ventas = () => {
