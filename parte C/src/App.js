@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Products from "./components/productos/productos";
 import Ventas from "./components/ventas/Ventas";
+import Home from "./components/Home/home";
 
 function App() {
   const [Metamask, setMetamask] = useState(false);
@@ -87,16 +88,17 @@ function App() {
           <Route path="/productos" element={<Products />} />
           <Route path="/register" element={<Register />} />
           <Route path="/ventas" element={<Ventas/>}/>
+          <Route path="/wallet" element={<Barra
+                    conectarWallet={handleConnectWallet}
+                    Accounts={accounts}
+                    Balance={balanceEth}
+                  ></Barra>}/>
           <Route
             path="/inicio"
             element={
               Metamask ? (
                 <>
-                  <Barra
-                    conectarWallet={handleConnectWallet}
-                    Accounts={accounts}
-                    Balance={balanceEth}
-                  ></Barra>
+                  <Home></Home>
                 </>
               ) : (
                 <div className="text-center">

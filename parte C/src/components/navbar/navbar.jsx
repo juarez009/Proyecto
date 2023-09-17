@@ -3,12 +3,12 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Barra(props) {
-  
   const handleCerrarSesion = () => {     
     // Elimina el token de autenticación del almacenamiento local
     localStorage.removeItem("authToken");  
     // Redirige al usuario a la página de inicio de sesión      window.location.href = "/"; // Cambia "/login" a la URL de tu página de inicio de sesión
     };
+
   
   return (
     <div className="container-fluid">
@@ -90,7 +90,8 @@ export default function Barra(props) {
               <ul class="nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
                   <a class="nav-link link-light" aria-current="page" href="#">
-                    <i class="fa-solid fa-house fa-xl"></i>
+                    <Link to="/inicio" className="text-light">
+                    <i class="fa-solid fa-house fa-xl"></i></Link>
                   </a>
                 </li>
                 <li class="nav-item">
