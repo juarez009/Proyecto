@@ -179,6 +179,42 @@ app.delete("/delete/:id", (req, res) => {
   });
 });
 
+
+// Ruta para actualizar el stock de un producto por su ID
+app.post("/api/productos/:id/actualizarStock", (req, res) => {
+  const productoId = req.params.id;
+  const nuevoStock = req.body.nuevoStock; // Debes enviar el nuevo stock en el cuerpo de la solicitud
+
+  const sql = "UPDATE producto SET stock = ? WHERE id = ?";
+
+  db.query(sql, [nuevoStock, productoId], (err, result) => {
+    if (err) {
+      console.error("Error al actualizar el stock en la base de datos:", err);
+      res.status(500).json({ error: "Error al actualizar el stock" });
+    } else {
+      console.log("Stock actualizado en la base de datos");
+      res.status(200).json({ message: "Stock actualizado correctamente" });
+    }
+  });
+});
+
+// Definir una ruta para manejar solicitudes GET a '/api/productos'
+app.get("/api/productos", (req, res) => {
+  // Realiza la lógica para obtener los productos desde la base de datos aquí
+
+  const sql = "SELECT * FROM producto"; // Ejemplo de consulta SQL para obtener productos
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error("Error al obtener productos desde la base de datos:", err);
+      res.status(500).json({ error: "Error al obtener productos" });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+
 app.listen(3001, () => {
   console.log("Corriendo Los BlockChainxd en el puerto 3001");
 });
