@@ -154,9 +154,9 @@ function Products() {
                 href="#"
                 class="list-group-item border-0 d-inline-block text-truncate"
                 data-bs-parent="#sidebar"
-              >
+              ><Link to="/inicio" className="text-light">
                 <i class="bi bi-wallet-fill"></i> <br></br>
-                <span>Billetera</span>{" "}
+                <span>Billetera</span>{" "}</Link>
               </a>
               <a
                 href="#"

@@ -2,7 +2,14 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 
+
 export default function Barra(props) {
+  const handleCerrarSesion = () => {      // Elimina el token de autenticación del almacenamiento local
+    localStorage.removeItem("authToken");
+      
+    // Redirige al usuario a la página de inicio de sesión      window.location.href = "/"; // Cambia "/login" a la URL de tu página de inicio de sesión
+  };
+
   return (
     <div className="container-fluid">
       <div class="row flex-nowrap">
@@ -118,7 +125,7 @@ export default function Barra(props) {
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" onClick={handleCerrarSesion} href="/">
                         Cerrar sesión
                       </a>
                     </li>

@@ -1,34 +1,7 @@
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-}
-
-.background-venta {
-    background-color: black;
-    height: 100vh;
-}
-
-.product-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 5px;
-    text-align: center;
-    width: 180px;
-    height: 190px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
 .cart {
     border: 1px solid #ddd;
     padding: 7px 10px 10px 10px;
-    height: 100vh;
-}
-
-.cart h2 {
-    font-size: x-large;
-    text-align: center;
+    height: 720px;
 }
 
 .cart ul {
@@ -37,44 +10,60 @@ body {
     margin: 0;
 }
 
-.productos-precio {
-    text-align: end;
-} 
-
-.lista-carrito {
-    padding-bottom: 20px;
+.hover-button {
+    cursor: pointer;
+    position: static;
 }
 
-.productos-carrito {
-    overflow: auto;
-    height: 250px;
+.hover-button::before {
+    content: "$35.00";
 }
 
-.nav-tabs-container {
-    bottom: 0;
-    position: fixed;
+.hover-button:hover::before {
+    transform: translate(-50%, -50%);
+    content: "Agregar";
+    transition: all 300ms;
 }
 
-.productos {
-    display: flex;
+
+/*------------------------Media Queries------------------------*/
+
+@media (min-width: 992px) {
+    .contenedor-cards {
+        justify-content: flex-start;
+    }
 }
 
-.button-product {
-    background-color: lightgrey;
-    border-radius: 9px;
+@media (max-width: 991px) {
+    .contenedor-cards {
+        justify-content: space-evenly;
+    }
 }
 
-.buttons-carrito {
-    display: flex;
-    justify-content: center;
+@media (min-width: 638px) and (max-width: 991px) {
+    .contenedor-productos {
+        height: 490px!important;
+    }    
+    .cart {
+        height: 700px!important;
+    }
 }
 
-.checkbox {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 20px;
+@media (min-width: 339px) and (max-width: 637px) {
+    .contenedor-productos {
+        height: 530px!important;
+    }
+
+    .cart {
+        height: 660px!important;
+    }
 }
 
-.text-checkbox {
-    font-size: small;
+@media (min-width: 256px) and (max-width: 339px) {
+    .contenedor-productos {
+        height: 570px!important;
+    }    
+    .cart {
+        height: 700px!important;
+    }
 }
