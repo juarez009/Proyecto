@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import './Ventas.css'
-import Cards from "./Cards";
 import { Link } from "react-router-dom";
+import Cards from "./Cards";
+//import QRCode from "react-qr-code";
 
 const Ventas = () => {
+     /*function codigoQR(){
+    console.log("Generando QR de Venta");
+    Swal.fire({
+      title: 'Sweet!',
+      text: 'Modal with a custom image.',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    }
+    )   
+  }*/
     return (
         <div className="container-fluid">
             <div class="row flex-nowrap">
@@ -34,9 +46,8 @@ const Ventas = () => {
                             class="list-group-item border-0 d-inline-block text-truncate"
                             data-bs-parent="#sidebar"
                         >
-                          <Link to="/inicio" className="text-light">
                             <i class="bi bi-wallet-fill"></i> <br></br>
-                            <span>Billetera</span>{" "}</Link>
+                            <span>Billetera</span>{" "}
                         </a>
                         <a
                             href="#"
@@ -173,3 +184,4 @@ const Ventas = () => {
 }
 
 export default Ventas;
+/* */

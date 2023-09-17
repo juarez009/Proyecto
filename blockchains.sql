@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2023 a las 00:32:58
+-- Tiempo de generación: 14-09-2023 a las 18:52:49
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,6 +54,31 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`) VALUES
+(1, 'Cuadernos grapados', 'Cuadernos de rayas engrapados.', 0.65, 21),
+(2, 'Lapiceros (rojo, negro y azul)', 'Lapiceros bic de diferentes colores.', 0.25, 45),
+(3, 'Cosedora', 'Maquina para coser.', 10.65, 10),
+(4, 'Ganchos para cosedoras', 'ganchos de repuesto para cosedora.', 2.50, 50),
+(5, 'Block iris', 'Block de colores.', 1.50, 15),
+(6, 'Folder tamaño carta', 'Folder de colores tamaño carta.', 0.25, 10),
+(7, 'Recibo de caja menor', 'Recibos comerciales.', 0.25, 25),
+(8, 'Lapiz N2', 'Lapiz para dibujar N2', 0.45, 50),
+(9, 'Caja de colores', 'Caja de 24 colores.', 2.50, 22),
+(10, 'Bisturi', 'bisturi para cortar diferentes tipos de papel o carton.', 3.15, 19),
+(11, 'Cinta de enmascarar', 'Cinta para enmascarar.', 0.75, 21),
+(12, 'Cuadernos argollados', 'Cuadernos de rayas argollados.', 1.00, 22),
+(13, 'Block rayado carta y oficio', 'Block de notas tamaño carta y tamaño oficio.', 0.40, 41),
+(14, 'Grapadora de uno o dos huecos', 'Grapadora mediana.', 2.50, 17),
+(15, 'Tablero de corcho', 'Tablero de corte.', 6.35, 11),
+(16, 'Marcadores borrables para tablero', 'Plumones para pizarra.', 1.25, 20),
+(17, 'Tizas para tablero', 'Tiza para pizarra.', 0.75, 17),
+(18, 'Borrados para marcadores', 'Borrador para pizarra.', 3.00, 19),
+(19, 'Papel carta para impresora', 'Papel bond color blanco.', 0.01, 5),
+(20, 'Block de dibujo', 'Block en blanco tamaño carta y tamaño oficio.', 0.75, 15),
+(21, 'Bitacoras', 'Bitacoras de anotaciones.', 1.25, 23),
+(22, 'Marcadores de vinilo', 'Marcadores.', 1.50, 13),
+(23, 'Micropuntas de colores', 'Micro puntas de respuesto.', 2.00, 13),
+(24, 'Portaminas', 'Porta minas de repuesto.', 1.60, 15),
+(25, 'Lapiz puntaminas', 'Lapiz puntamina sencillo', 1.50, 12),
 (40, 'Papel', 'nose', 7.00, 14),
 (44, 'Libreta', 'para dibujar', 2.00, 12);
 
