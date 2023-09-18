@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="background-login">
+    <div className="background-login" style={{background:"#212529"}}>
       <div
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
