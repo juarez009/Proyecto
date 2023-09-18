@@ -65,7 +65,7 @@ const Register = () => {
   }
 
   return (
-    <div className="background-register">
+    <div className="background-register" style={{background:"#212529"}}>
       <div
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
