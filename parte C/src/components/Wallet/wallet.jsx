@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./navbar.css";
+import "./wallet.css";
 import { Link } from "react-router-dom";
 
 export default function Barra(props) {
