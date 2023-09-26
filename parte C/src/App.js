@@ -2,7 +2,7 @@ import Barra from "./components/navbar/navbar";
 import Web3 from "web3";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import Smart from "./components/smartContract/Smart.json"
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Products from "./components/productos/productos";
@@ -15,7 +15,7 @@ function App() {
   const [balance, setbalance] = useState(null);
   const [accounts, setAccounts] = useState(null);
   const [balanceEth, setBalanceEth] = useState(null);
-
+  const [contract,setContract]=useState(null);
   // Function to connect the wallet
   const conectarWallet = async () => {
     if (typeof window.ethereum !== "undefined") {
@@ -24,6 +24,9 @@ function App() {
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
           setMetamask(true);
+          const contractInstance=new web3Instance.eth.Contract(Smart,Smart &&"0xcB4C0E5C06f752df50183cbdc6F97a82AE54531d")
+        setContract(contractInstance);
+        console.log("contractInstance ==> Conected", contractInstance);
           // Guardar la información de la cuenta en localStorage
           localStorage.setItem("walletConnected", "true");
         } catch (error) {
@@ -43,13 +46,16 @@ function App() {
             if (isConnected) {
               const web3Instance = new Web3(window.ethereum);
               setWeb3(web3Instance);
+              const contractInstance=new web3Instance.eth.Contract(Smart,Smart &&"0xcB4C0E5C06f752df50183cbdc6F97a82AE54531d")
+        setContract(contractInstance);
+        console.log("contractInstance ==> Conected", contractInstance);
               setAccounts(accounts[0]); // Establecer la dirección de la cuenta
               setMetamask(true);
               updateBalance(web3Instance, accounts[0]); // Actualizar el balance
             }
           }
         }
-    
+        
         checkWalletConnection();
       }, []);
     

@@ -1,0 +1,103 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "idFact",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "Wallet",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFact",
+				"type": "uint256"
+			}
+		],
+		"name": "almacenarFact",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"name": "estadoEnvio",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "direccion",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFact",
+				"type": "uint256"
+			}
+		],
+		"name": "pagoFactura",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "Facturas",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "idFact",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "Wallet",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFact",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "propietario",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
