@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Barra(props) {
 
   const [theme, setTheme] = useState (
-    localStorage.getItem("dark-mode") === "true" ? "dark" : "light"
+    localStorage.getItem("light-mode") === "true" ? "light" : "dark"
   );
 
   const handleCerrarSesion = () => {     
@@ -17,7 +17,7 @@ export default function Barra(props) {
     useEffect(() => {
       const body = document.body;
       body.setAttribute("data-bs-theme", theme);
-      localStorage.setItem("dark-mode", theme === "dark" ? "true" : "false");
+      localStorage.setItem("light-mode", theme === "light" ? "true" : "false");
   })
   
   return (
