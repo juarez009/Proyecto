@@ -6,7 +6,7 @@ import blockchain from "./Img/blockChain.png"
 export default function Home() {
 
     const [theme, setTheme] = useState (
-        localStorage.getItem("dark-mode") === "true" ? "dark" : "light"
+        localStorage.getItem("light-mode") === "true" ? "light" : "dark"
     );
 
     const handleCerrarSesion = () => {     
@@ -18,7 +18,7 @@ export default function Home() {
     useEffect(() => {
         const body = document.body;
         body.setAttribute("data-bs-theme", theme);
-        localStorage.setItem("dark-mode", theme === "dark" ? "true" : "false");
+        localStorage.setItem("light-mode", theme === "light" ? "true" : "false");
     })
 
     return (
