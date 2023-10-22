@@ -24,7 +24,7 @@ function App() {
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
           setMetamask(true);
-          const contractInstance=new web3Instance.eth.Contract(Smart,Smart &&"0xcB4C0E5C06f752df50183cbdc6F97a82AE54531d")
+          const contractInstance=new web3Instance.eth.Contract(Smart,Smart &&"0x6370859B30AA0e92bc65bF97EF27b2B130477d68")
         setContract(contractInstance);
         console.log("contractInstance ==> Conected", contractInstance);
           // Guardar la información de la cuenta en localStorage
@@ -93,7 +93,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/productos" element={<Products />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ventas" element={<Ventas/>}/>
+          <Route path="/ventas" element={<Ventas contrato={contract} Accounts={accounts}/>}/>
           <Route path="/wallet" element={<Barra
                     conectarWallet={handleConnectWallet}
                     Accounts={accounts}

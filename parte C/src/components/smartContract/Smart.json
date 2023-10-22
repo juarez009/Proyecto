@@ -1,28 +1,5 @@
 [
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "idFact",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "Wallet",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalFact",
-				"type": "uint256"
-			}
-		],
-		"name": "almacenarFact",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -49,7 +26,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "totalFact",
+				"name": "valor",
 				"type": "uint256"
 			}
 		],
@@ -59,14 +36,51 @@
 		"type": "function"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "",
+				"name": "sender",
 				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "idFact",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "totalFact",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "enviado",
+				"type": "uint256"
 			}
 		],
-		"name": "Facturas",
+		"name": "transaccionDetalle",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "facturas",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -75,8 +89,60 @@
 			},
 			{
 				"internalType": "address",
-				"name": "Wallet",
+				"name": "sender",
 				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalFact",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "globalFacturaId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_idFact",
+				"type": "uint256"
+			}
+		],
+		"name": "obtenerDetallesFactura",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "idFact",
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",

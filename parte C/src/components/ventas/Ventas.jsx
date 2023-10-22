@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Web3 from 'web3';
+import EthereumQRCode from './EthereumQRCode';
 
-function Ventas() {
+export default function Ventas(props) {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [totalVenta, setTotalVenta] = useState(0);
-  const [direccionWallet, setDireccionWallet] = useState(""); // Agrega la dirección de la wallet aquí
-
+  const [direccionWallet, setDireccionWallet] = useState("");
+  const [showQRDialog, setShowQRDialog] = useState(false); // Agrega la dirección de la wallet aquí
+  const value = Web3.utils.toWei(totalVenta.toString(), 'ether');
   useEffect(() => {
     // Realizar una solicitud GET al servidor backend para obtener los productos
     axios
@@ -20,7 +23,7 @@ function Ventas() {
       });
 
     // Establecer la dirección de la wallet (reemplaza 'WALLET' con la dirección correcta)
-    setDireccionWallet("WALLET");
+    setDireccionWallet("0x94B61F40c0C48a8E78D6EAa134D728DC5a47564C");
   }, []);
 
   // Función para agregar un producto al carrito y actualizar el stock en la base de datos
@@ -127,7 +130,6 @@ function Ventas() {
       }
     }
   };
-
   // Función para eliminar un producto del carrito
   const eliminarDelCarrito = (producto) => {
     const nuevoCarrito = carrito.filter((item) => item.id !== producto.id);
@@ -180,7 +182,8 @@ function Ventas() {
     setTotalVenta(nuevoTotal);
   };
 
-  const realizarPago = () => {
+  const realizarPago = async (e) => {
+    e.preventDefault();
     // Verificar si hay productos en el carrito y el total de compra es mayor que cero
     if (carrito.length === 0 || totalVenta === 0) {
       Swal.fire({
@@ -189,27 +192,76 @@ function Ventas() {
         confirmButtonText: "Ok",
       });
     } else {
-      // Generar el contenido del código QR y mostrarlo
-      const contenidoQR = `bitcoin:${direccionWallet}?amount=${totalVenta}`;
-      Swal.fire({
-        title: "Escanee el código QR para realizar el pago",
-        imageUrl: `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encodeURIComponent(
-          contenidoQR
-        )}`,
-        imageAlt: "Código QR",
-        confirmButtonText: "Ok",
-      }).then(() => {
-        // Reiniciar el ticket después de mostrar el código QR
-        setCarrito([]);
-        setTotalVenta(0);
-      });
+console.log(props.Accounts)
+
+      try{
+        const approve= await props.contrato.methods.pagoFactura(
+          props.Accounts,
+          value
+        ).send(setShowQRDialog(true));
+        
+      }
+      catch(error){
+        console.log(error);
+      }
+      // Generar el contenido del código QR y mostrarlo;
+      
+      
+      
     }
   };
 
+  const manejarPago = async () => {
+    try {
+      // Verificar si MetaMask está instalado
+      if (typeof window.ethereum !== 'undefined') {
+        const web3 = new Web3(window.ethereum);
+
+        // Comprobar si el usuario está conectado
+        const accounts = await web3.eth.getAccounts();
+        if (accounts.length === 0) {
+          throw new Error("No se ha detectado una billetera Ethereum.");
+        }
+
+        // Crear una transacción para enviar el pago a la dirección de la billetera
+        const transaction = {
+          to: direccionWallet, // Dirección de destino
+          value: web3.utils.toWei(totalVenta.toString(), "ether"), // Monto en Wei
+        };
+
+        // Enviar la transacción a través de MetaMask
+        await web3.eth.sendTransaction(transaction);
+
+        // Transacción exitosa, mostrar un mensaje
+        Swal.fire({
+          title: "Pago exitoso",
+          icon: "success",
+          text: `Se ha realizado un pago de ${totalVenta} Ether a la dirección ${direccionWallet}.`,
+          confirmButtonText: "Ok",
+        });
+
+        // Cerrar el cuadro de diálogo QR y reiniciar el estado
+        setShowQRDialog(false);
+        setCarrito([]);
+        setTotalVenta(0);
+      } else {
+        throw new Error("MetaMask no está instalado o no está disponible.");
+      }
+    } catch (error) {
+      // Manejar errores, por ejemplo, si el usuario rechaza la transacción en MetaMask
+      Swal.fire({
+        title: "Error en el pago",
+        icon: "error",
+        text: "Se produjo un error al procesar el pago.",
+        confirmButtonText: "Ok",
+      });
+    }
+  };
   const handleVolverAtras = () => {
     window.history.back();
   };
-
+  
+  
   return (
     <div className="container">
       <h1>Productos en Venta</h1>
@@ -228,7 +280,7 @@ function Ventas() {
                   <div className="card-body">
                     <h5 className="card-title">{producto.nombre}</h5>
                     <p className="card-text">{producto.descripcion}</p>
-                    <p className="card-text">Precio: ${producto.precio}</p>
+                    <p className="card-text">Precio: {producto.precio}</p>
                     {producto.stock > 0 ? (
                       <button
                         className="btn btn-primary"
@@ -275,7 +327,7 @@ function Ventas() {
                         }
                       />
                     </td>
-                    <td>${(item.precio * item.cantidad).toFixed(2)}</td>
+                    <td>{(item.precio * item.cantidad).toFixed(2)}</td>
                     <td>
                       <button
                         className="btn btn-primary"
@@ -302,17 +354,35 @@ function Ventas() {
             </table>
           </div>
           <p className="total-venta">
-            Total de Venta: <strong>${totalVenta.toFixed(2)}</strong>
+            Total de Venta: <strong>{totalVenta.toFixed(2)}</strong>
           </p>
           {carrito.length > 0 && (
-            <button className="btn btn-success" onClick={realizarPago}>
+            <button className="btn btn-success" onClick={realizarPago} >
               Pago
             </button>
           )}
+          {showQRDialog && (
+        <div className="qr-dialog">
+          <h2>Escanee el código QR para realizar el pago</h2>
+          <EthereumQRCode address={direccionWallet} amount={value} />
+          <p>Total de Venta: <strong>{totalVenta.toFixed(2)}</strong></p>
+          <button
+            className="btn btn-primary"
+            onClick={manejarPago}
+          >
+            Realizar Pago
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setShowQRDialog(false)}
+          >
+            Cancelar
+          </button>
+        </div>
+      )}
         </div>
       </div>
     </div>
   );
 }
 
-export default Ventas;

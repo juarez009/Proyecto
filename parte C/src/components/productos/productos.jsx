@@ -124,7 +124,7 @@ function Products() {
     window.history.back();
   };
 
-  
+
   return (
     <div className="container-fluid">
       <div class="row flex-nowrap">
@@ -155,8 +155,8 @@ function Products() {
                 class="list-group-item border-0 d-inline-block text-truncate"
                 data-bs-parent="#sidebar"
               ><Link to="/inicio" className="list-sidebar">
-                <i class="bi bi-wallet-fill"></i> <br></br>
-                <span>Billetera</span>{" "}</Link>
+                  <i class="bi bi-wallet-fill"></i> <br></br>
+                  <span>Billetera</span>{" "}</Link>
               </a>
               <a
                 href="#"
@@ -205,7 +205,7 @@ function Products() {
 
           <br></br>
           <h1>Gestion de Productos</h1>
-          
+
           <div className="row">
             <div className="col-md-4">
               <div className="form-group">
@@ -299,7 +299,13 @@ function Products() {
             }
           </div>
 
-
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
           <table className="table">
             <thead>
               <tr>
@@ -319,7 +325,7 @@ function Products() {
                   <td>{val.descripcion}</td>
                   <td>
                     {typeof val.precio === "number"
-                      ? `$ ${val.precio.toFixed(2)}`
+                      ? `ETH ${val.precio.toFixed(2)}`
                       : "Invalid Price"}
                   </td>
                   <td>{val.stock}</td>
@@ -363,4 +369,4 @@ function Products() {
 }
 
 export default Products;
-/**/ 
+/**/
